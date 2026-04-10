@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extreme Scripts | Educational Research</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-red: #8b0000;
+            --bg-black: #050505;
+            --card-bg: rgba(15, 15, 15, 0.9);
+            --glow: 0 0 15px rgba(255, 0, 0, 0.6);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: var(--glow);
+            margin-bottom: 20px;
+        }
+
+        .intro-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .intro-box p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #cccccc;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem !important;
+            color: #888 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            font-style: italic;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .main-btn {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: #fff;
+            padding: 15px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: var(--glow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .main-btn:hover {
+            background: var(--primary-red);
+            box-shadow: 0 0 30px var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #444;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .secondary-btn:hover {
+            border-color: var(--primary-red);
+            background: rgba(255, 0, 0, 0.1);
+        }
+
+        /* Phase Styling */
+        .phase {
+            display: none;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .phase.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Phase 2 Specific */
+        .p2-btn {
+            border: 2px solid #555 !important;
+            box-shadow: none !important;
+        }
+        
+        .p2-btn:hover {
+            border-color: var(--primary-red) !important;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .secondary-btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles-js"></canvas>
+
+    <div class="container">
+        
+        <div id="phase1" class="phase active">
+            <h1>Extreme Scripts</h1>
+            
+            <div class="intro-box">
+                <p>Welcome to <strong>Extreme Scripts</strong>. We specialize in the development and analysis of Roblox scripts strictly for <strong>educational purposes, testing, and security research</strong>.</p>
+                <p>Our goal is to provide a learning platform for developers to understand Luau scripting environments. We do <strong>not</strong> promote or encourage the violation of Roblox's Terms of Service (ToS) or any other platform rules.</p>
+                <p class="disclaimer">
+                    <strong>DISCLAIMER:</strong> By using this site, you acknowledge that you are responsible for your own actions. All materials provided here are intended for educational simulation in controlled environments. Extreme Scripts is not liable for any account actions, bans, or consequences resulting from the misuse of this information on public platforms.
+                </p>
+            </div>
+
+            <button class="main-btn" onclick="goToPhase2()">Get Script</button>
+
+            <div class="btn-group">
+                <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn">
+                    Join Our Discord
+                </a>
+                <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn">
+                    Subscribe To Us
+                </a>
+            </div>
+        </div>
+
+        <div id="phase2" class="phase">
+            <h1>Ready?</h1>
+            <p style="margin-bottom: 30px; color: #888;">Click below to access the official script repository on Discord.</p>
+            <a href="https://discord.gg/gjEWGU5Z" class="main-btn p2-btn">Get Script</a>
+            <br><br>
+            <a href="#" onclick="goToPhase1()" style="color: #555; text-decoration: none; font-size: 0.8rem;">Go Back</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Phase Switching Logic
+        function goToPhase2() {
+            const p1 = document.getElementById('phase1');
+            const p2 = document.getElementById('phase2');
+            
+            p1.style.opacity = '0';
+            setTimeout(() => {
+                p1.classList.remove('active');
+                p2.classList.add('active');
+                setTimeout(() => {
+                    p2.style.opacity = '1';
+                }, 50);
+            }, 400);
+        }
+
+        function goToPhase1() {
+            const p1 = document.getElementById('phase1');
+            const p2 = document.getElementById('phase2');
+            
+            p2.style.opacity = '0';
+            setTimeout(() => {
+                p2.classList.remove('active');
+                p1.classList.add('active');
+                setTimeout(() => {
+                    p1.style.opacity = '1';
+                }, 50);
+            }, 400);
+        }
+
+        // Particle System
+        const canvas = document.getElementById('particles-js');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? '#ff0000' : '#330000';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            particles = [];
+            const count = (canvas.width * canvas.height) / 10000;
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            initCanvas();
+            createParticles();
+        });
+
+        initCanvas();
+        createParticles();
+        animate();
+    </script>
+</body>
+</html>
