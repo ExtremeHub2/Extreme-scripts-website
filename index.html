@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extreme Scripts | Educational Research</title>
+    <title>Extreme Scripts | Hub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon Added -->
+    <link rel="icon" type="image/png" href="ExtremeEmpire.png">
+    <link rel="shortcut icon" href="ExtremeEmpire.png">
+    <link rel="apple-touch-icon" href="ExtremeEmpire.png">
 
     <style>
         :root {
@@ -224,7 +229,6 @@
     </div>
 
     <script>
-        // Phase Switching Logic
         function goToPhase2() {
             const p1 = document.getElementById('phase1');
             const p2 = document.getElementById('phase2');
@@ -253,7 +257,6 @@
             }, 400);
         }
 
-        // Particle System
         const canvas = document.getElementById('particles-js');
         const ctx = canvas.getContext('2d');
         let particles = [];
