@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extreme Scripts | Hub</title>
-    
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-
     <!-- Favicon Added -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
+
+    <script src="https://pl29118224.profitablecpmratenetwork.com/c5/e9/5c/c5e95cf08f9a621dfe4545f665d94eb3.js"></script>
 
     <style>
         :root {
@@ -23,13 +24,11 @@
             --glow: 0 0 15px rgba(255, 0, 0, 0.6);
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             background-color: var(--bg-black);
             color: #ffffff;
@@ -37,7 +36,6 @@
             overflow-x: hidden;
             min-height: 100vh;
         }
-
         /* Particle Background */
         #particles-js {
             position: fixed;
@@ -47,7 +45,6 @@
             height: 100%;
             z-index: -1;
         }
-
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -59,7 +56,6 @@
             align-items: center;
             text-align: center;
         }
-
         /* Typography */
         h1 {
             font-family: 'Orbitron', sans-serif;
@@ -70,7 +66,6 @@
             text-shadow: var(--glow);
             margin-bottom: 20px;
         }
-
         .intro-box {
             background: var(--card-bg);
             border: 1px solid rgba(255, 0, 0, 0.2);
@@ -81,13 +76,11 @@
             line-height: 1.6;
             animation: fadeIn 1s ease-out;
         }
-
         .intro-box p {
             margin-bottom: 15px;
             font-size: 1rem;
             color: #cccccc;
         }
-
         .disclaimer {
             font-size: 0.85rem !important;
             color: #888 !important;
@@ -95,7 +88,6 @@
             padding-top: 15px;
             font-style: italic;
         }
-
         /* Buttons */
         .btn-group {
             display: flex;
@@ -104,7 +96,6 @@
             justify-content: center;
             margin-top: 20px;
         }
-
         .main-btn {
             background: transparent;
             border: 2px solid var(--primary-red);
@@ -122,13 +113,11 @@
             display: inline-block;
             text-decoration: none;
         }
-
         .main-btn:hover {
             background: var(--primary-red);
             box-shadow: 0 0 30px var(--primary-red);
             transform: translateY(-3px);
         }
-
         .secondary-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid #444;
@@ -142,12 +131,10 @@
             align-items: center;
             gap: 10px;
         }
-
         .secondary-btn:hover {
             border-color: var(--primary-red);
             background: rgba(255, 0, 0, 0.1);
         }
-
         /* Phase Styling */
         .phase {
             display: none;
@@ -155,28 +142,24 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-
         .phase.active {
             display: block;
             opacity: 1;
         }
-
         /* Phase 2 Specific */
         .p2-btn {
             border: 2px solid #555 !important;
             box-shadow: none !important;
         }
-        
+       
         .p2-btn:hover {
             border-color: var(--primary-red) !important;
         }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         /* Mobile Adjustments */
         @media (max-width: 600px) {
             .btn-group {
@@ -190,14 +173,12 @@
     </style>
 </head>
 <body>
-
     <canvas id="particles-js"></canvas>
-
     <div class="container">
-        
+       
         <div id="phase1" class="phase active">
             <h1>Extreme Scripts</h1>
-            
+           
             <div class="intro-box">
                 <p>Welcome to <strong>Extreme Scripts</strong>. We specialize in the development and analysis of Roblox scripts strictly for <strong>educational purposes, testing, and security research</strong>.</p>
                 <p>Our goal is to provide a learning platform for developers to understand Luau scripting environments. We do <strong>not</strong> promote or encourage the violation of Roblox's Terms of Service (ToS) or any other platform rules.</p>
@@ -205,9 +186,7 @@
                     <strong>DISCLAIMER:</strong> By using this site, you acknowledge that you are responsible for your own actions. All materials provided here are intended for educational simulation in controlled environments. Extreme Scripts is not liable for any account actions, bans, or consequences resulting from the misuse of this information on public platforms.
                 </p>
             </div>
-
             <button class="main-btn" onclick="goToPhase2()">Get Script</button>
-
             <div class="btn-group">
                 <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn">
                     Join Our Discord
@@ -217,7 +196,6 @@
                 </a>
             </div>
         </div>
-
         <div id="phase2" class="phase">
             <h1>Ready?</h1>
             <p style="margin-bottom: 30px; color: #888;">Click below to access the official script repository on Discord.</p>
@@ -225,14 +203,12 @@
             <br><br>
             <a href="#" onclick="goToPhase1()" style="color: #555; text-decoration: none; font-size: 0.8rem;">Go Back</a>
         </div>
-
     </div>
-
     <script>
         function goToPhase2() {
             const p1 = document.getElementById('phase1');
             const p2 = document.getElementById('phase2');
-            
+           
             p1.style.opacity = '0';
             setTimeout(() => {
                 p1.classList.remove('active');
@@ -242,11 +218,10 @@
                 }, 50);
             }, 400);
         }
-
         function goToPhase1() {
             const p1 = document.getElementById('phase1');
             const p2 = document.getElementById('phase2');
-            
+           
             p2.style.opacity = '0';
             setTimeout(() => {
                 p2.classList.remove('active');
@@ -256,16 +231,13 @@
                 }, 50);
             }, 400);
         }
-
         const canvas = document.getElementById('particles-js');
         const ctx = canvas.getContext('2d');
         let particles = [];
-
         function initCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
@@ -290,7 +262,6 @@
                 ctx.fill();
             }
         }
-
         function createParticles() {
             particles = [];
             const count = (canvas.width * canvas.height) / 10000;
@@ -298,7 +269,6 @@
                 particles.push(new Particle());
             }
         }
-
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
@@ -307,12 +277,10 @@
             });
             requestAnimationFrame(animate);
         }
-
         window.addEventListener('resize', () => {
             initCanvas();
             createParticles();
         });
-
         initCanvas();
         createParticles();
         animate();
