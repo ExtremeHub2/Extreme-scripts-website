@@ -4,195 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extreme Scripts | Hub</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.ico">
-
-    <style>
-        :root {
-            --primary-red: #ff0000;
-            --dark-red: #8b0000;
-            --bg-black: #050505;
-            --card-bg: rgba(15, 15, 15, 0.9);
-            --glow: 0 0 15px rgba(255, 0, 0, 0.6);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background-color: var(--bg-black);
-            color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-        #particles-js {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: var(--primary-red);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: var(--glow);
-            margin-bottom: 20px;
-        }
-
-        .intro-box {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            padding: 30px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-        .intro-box p { margin-bottom: 15px; font-size: 1rem; color: #cccccc; }
-        .disclaimer {
-            font-size: 0.85rem !important;
-            color: #888 !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 15px;
-            font-style: italic;
-        }
-
-        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
-        .main-btn {
-            background: transparent; border: 2px solid var(--primary-red); color: #fff;
-            padding: 15px 40px; font-family: 'Orbitron', sans-serif; font-size: 1.2rem;
-            text-transform: uppercase; cursor: pointer; border-radius: 5px;
-            box-shadow: var(--glow); transition: var(--transition); display: inline-block; text-decoration: none;
-        }
-        .main-btn:hover { background: var(--primary-red); box-shadow: 0 0 30px var(--primary-red); transform: translateY(-3px); }
-        .secondary-btn {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid #444; color: #fff;
-            padding: 12px 25px; border-radius: 5px; text-decoration: none;
-            font-size: 0.9rem; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;
-        }
-        .secondary-btn:hover { border-color: var(--primary-red); background: rgba(255, 0, 0, 0.1); }
-
-        .copy-box {
-            position: relative; background: #000; border: 1px solid #333;
-            border-radius: 6px; padding: 15px; margin-top: 15px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .copy-box code { font-family: monospace; color: #00ff00; font-size: 0.85rem; overflow-x: auto; white-space: nowrap; width: 80%; }
-
-        /* ABOUT US SYSTEM */
-        .about-layout { display: flex; width: 100%; background: var(--card-bg); border: 1px solid rgba(255, 0, 0, 0.2); border-radius: 12px; backdrop-filter: blur(10px); overflow: hidden; text-align: left; min-height: 400px; }
-        .tabs-sidebar { width: 30%; background: rgba(0, 0, 0, 0.6); border-right: 1px solid rgba(255, 0, 0, 0.2); display: flex; flex-direction: column; }
-        .tab-link { background: transparent; color: #fff; padding: 18px 20px; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: 0.3s; }
-        .tab-link:hover, .tab-link.active-tab { background: rgba(255, 0, 0, 0.15); border-left: 3px solid var(--primary-red); color: var(--primary-red); }
-        .tab-content { width: 70%; padding: 40px; display: none; animation: fadeIn 0.4s ease-out; }
-        .tab-content.active-content { display: block; }
-        .tab-content h2 { font-family: 'Orbitron', sans-serif; color: var(--primary-red); margin-bottom: 20px; font-size: 1.8rem; }
-        .tab-content p { color: #ccc; line-height: 1.7; margin-bottom: 15px; }
-
-        .phase { display: none; width: 100%; opacity: 0; transition: opacity 0.5s ease; }
-        .phase.active { display: block; opacity: 1; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 768px) {
-            .about-layout { flex-direction: column; }
-            .tabs-sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
-            .tab-link { flex: 1 1 50%; }
-            .tab-content { width: 100%; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="particles-js"></canvas>
-    <div class="container">
-        
-        <div id="phase1" class="phase active">
-            <h1>Extreme Scripts</h1>
-            <div class="intro-box">
-                <p>Welcome to <strong>Extreme Scripts</strong>. We specialize in the development and analysis of Roblox scripts strictly for <strong>educational purposes, testing, and security research</strong>.</p>
-                <p>Our goal is to provide a learning platform for developers to understand Luau scripting environments. We do <strong>not</strong> promote or encourage the violation of Roblox's Terms of Service (ToS).</p>
-                <p class="disclaimer">
-                    <strong>DISCLAIMER:</strong> By using this site, you acknowledge that you are responsible for your own actions. Extreme Scripts is not liable for any account actions or consequences.
-                </p>
-            </div>
-            <button class="main-btn" onclick="goToPhase2()">Get Script</button>
-            <div class="btn-group">
-                <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn">Join Our Discord</a>
-                <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn">Subscribe To Us</a>
-            </div>
-            <div style="margin-top: 15px;">
-                <button onclick="goToPhaseAbout()" class="secondary-btn" style="margin: 0 auto; width: auto; padding: 12px 40px;">About Us</button>
-            </div>
-        </div>
+    <canvas id="particles-js" aria-hidden="true"></canvas>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
 
-        <div id="phase2" class="phase">
-            <h1>Discord Access</h1>
-            <div class="intro-box" style="max-width: 600px; margin: 0 auto 40px auto;">
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: #fff; margin-bottom: 15px;">
-                    All of our official scripts are hosted securely within our Discord community.
-                </p>
-                <p style="color: #ccc;">
-                    Join the server to get instant access to <strong>Anime Knockout</strong>, <strong>universal scripts</strong>, and stay updated with our latest releases and support.
-                </p>
-            </div>
-            
-            <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="main-btn" style="padding: 18px 50px; font-size: 1.3rem;">Join Discord Server</a>
-            
-            <br><br><br>
-            <a href="#" onclick="goToPhase1()" style="color: #555; text-decoration: none; font-size: 0.9rem; font-family: 'Orbitron', sans-serif;">Go Back</a>
-        </div>
+    <main class="shell">
+        <section class="container">
+            <div id="phase1" class="phase active">
+                <div class="hero-badge">Extreme Scripts Hub</div>
+                <h1>Extreme Scripts</h1>
 
-        <div id="phaseAbout" class="phase">
-            <h1>Information</h1>
-            <div class="about-layout">
-                <div class="tabs-sidebar">
-                    <button class="tab-link active-tab" onclick="openTab(event, 'tab-about')">About Us</button>
-                    <button class="tab-link" onclick="openTab(event, 'tab-disc')">Disclaimers</button>
-                    <button class="tab-link" onclick="openTab(event, 'tab-lic')">License</button>
-                    <button class="tab-link" onclick="openTab(event, 'tab-soc')">Socials</button>
+                <div class="intro-box">
+                    <p>Welcome to <strong>Extreme Scripts</strong>. We specialize in the development and analysis of Roblox scripts strictly for <strong>educational purposes, testing, and security research</strong>.</p>
+                    <p>Our goal is to provide a learning platform for developers to understand Luau scripting environments. We do <strong>not</strong> promote or encourage the violation of Roblox's Terms of Service (ToS).</p>
+                    <p class="disclaimer">
+                        <strong>DISCLAIMER:</strong> By using this site, you acknowledge that you are responsible for your own actions. Extreme Scripts is not liable for any account actions or consequences.
+                    </p>
                 </div>
-                
-                <div id="tab-about" class="tab-content active-content">
-                    <h2>About Us</h2>
-                    <p>Extreme Scripts was founded in 2024 as a small server for development purposes. Our mission is to provide high-quality, optimized scripts for educational and security research purposes.</p>
-                    <p>We focus on the Luau environment, and provide with executor-based scripts.</p>
-                </div>
-                <div id="tab-disc" class="tab-content">
-                    <h2>Disclaimers</h2>
-                    <p>All scripts and information provided on this website are for strictly educational purposes. We do not promote the use of scripts to ruin the experience of other players or violate Roblox's Terms of Service.</p>
-                    <p>Usage of third-party software is always at your own risk. Extreme Scripts is not responsible for any actions taken against your account.</p>
-                </div>
-                <div id="tab-lic" class="tab-content">
-                    <h2>License</h2>
-                    <p>The scripts provided on this hub can be shared with proper credits to extreme scripts. However, the UI design and specific proprietary frameworks are owned by Extreme Scripts.</p>
-                    <p>You are free to use our scripts in your games, provided you do not attempt to resell them as your own work or share it without the creator's consent.</p>
-                </div>
-                <div id="tab-soc" class="tab-content">
-                    <h2>Socials</h2>
-                    <p>Connect with the community and stay updated with our latest releases:</p>
-                    <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn" style="margin-bottom: 10px; width: 100%;">YouTube Channel</a>
-                    <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn" style="width: 100%;">Join Discord Server</a>
+
+                <div class="cta-stack">
+                    <button class="main-btn" onclick="goToPhase2()">Get Script</button>
+                    <div class="btn-group">
+                        <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn">Join Our Discord</a>
+                        <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn">Subscribe To Us</a>
+                    </div>
+                    <div class="aux-link-wrap">
+                        <button onclick="goToPhaseAbout()" class="secondary-btn secondary-btn-wide">About Us</button>
+                    </div>
                 </div>
             </div>
-            <br>
-            <a href="#" onclick="goToPhase1()" style="color: #555; text-decoration: none; font-size: 0.9rem; font-family: 'Orbitron';">Go Back</a>
-        </div>
-    </div>
+
+            <div id="phase2" class="phase">
+                <div class="hero-badge">Secure Access</div>
+                <h1>Discord Access</h1>
+
+                <div class="intro-box intro-box-narrow">
+                    <p class="lead-text">
+                        All of our official scripts are hosted securely within our Discord community.
+                    </p>
+                    <p>
+                        Join the server to get instant access to <strong>Anime Knockout</strong>, <strong>universal scripts</strong>, and stay updated with our latest releases and support.
+                    </p>
+                </div>
+
+                <div class="cta-stack">
+                    <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="main-btn main-btn-large">Join Discord Server</a>
+                    <a href="#" onclick="goToPhase1()" class="back-link">Go Back</a>
+                </div>
+            </div>
+
+            <div id="phaseAbout" class="phase">
+                <div class="hero-badge">Information Center</div>
+                <h1>Information</h1>
+
+                <div class="about-layout">
+                    <div class="tabs-sidebar">
+                        <button class="tab-link active-tab" onclick="openTab(event, 'tab-about')">About Us</button>
+                        <button class="tab-link" onclick="openTab(event, 'tab-disc')">Disclaimers</button>
+                        <button class="tab-link" onclick="openTab(event, 'tab-lic')">License</button>
+                        <button class="tab-link" onclick="openTab(event, 'tab-soc')">Socials</button>
+                    </div>
+
+                    <div class="tab-panel">
+                        <div id="tab-about" class="tab-content active-content">
+                            <h2>About Us</h2>
+                            <p>Extreme Scripts was founded in 2024 as a small server for development purposes. Our mission is to provide high-quality, optimized scripts for educational and security research purposes.</p>
+                            <p>We focus on the Luau environment, and provide with executor-based scripts.</p>
+                        </div>
+                        <div id="tab-disc" class="tab-content">
+                            <h2>Disclaimers</h2>
+                            <p>All scripts and information provided on this website are for strictly educational purposes. We do not promote the use of scripts to ruin the experience of other players or violate Roblox's Terms of Service.</p>
+                            <p>Usage of third-party software is always at your own risk. Extreme Scripts is not responsible for any actions taken against your account.</p>
+                        </div>
+                        <div id="tab-lic" class="tab-content">
+                            <h2>License</h2>
+                            <p>The scripts provided on this hub can be shared with proper credits to extreme scripts. However, the UI design and specific proprietary frameworks are owned by Extreme Scripts.</p>
+                            <p>You are free to use our scripts in your games, provided you do not attempt to resell them as your own work or share it without the creator's consent.</p>
+                        </div>
+                        <div id="tab-soc" class="tab-content">
+                            <h2>Socials</h2>
+                            <p>Connect with the community and stay updated with our latest releases:</p>
+                            <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn social-btn">YouTube Channel</a>
+                            <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn social-btn">Join Discord Server</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" onclick="goToPhase1()" class="back-link">Go Back</a>
+            </div>
+        </section>
+    </main>
 
     <script>
         function goToPhase2() { switchPhase('phase2'); }
@@ -228,11 +136,15 @@
             evt.currentTarget.classList.add("active-tab");
         }
 
-        /* Particle Engine */
         const canvas = document.getElementById('particles-js');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        function initCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
@@ -240,30 +152,49 @@
                 this.size = Math.random() * 2 + 1;
                 this.speedX = Math.random() * 1 - 0.5;
                 this.speedY = Math.random() * 1 - 0.5;
-                this.color = Math.random() > 0.5 ? '#ff0000' : '#330000';
+                this.color = Math.random() > 0.5 ? '#ff3b3b' : '#421010';
             }
+
             update() {
-                this.x += this.speedX; this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0; if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0; if (this.y < 0) this.y = canvas.height;
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
             }
+
             draw() {
-                ctx.fillStyle = this.color; ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
+
         function createParticles() {
             particles = [];
             const count = (canvas.width * canvas.height) / 10000;
             for (let i = 0; i < count; i++) particles.push(new Particle());
         }
+
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
+            particles.forEach((p) => {
+                p.update();
+                p.draw();
+            });
             requestAnimationFrame(animate);
         }
-        window.addEventListener('resize', () => { initCanvas(); createParticles(); });
-        initCanvas(); createParticles(); animate();
+
+        window.addEventListener('resize', () => {
+            initCanvas();
+            createParticles();
+        });
+
+        initCanvas();
+        createParticles();
+        animate();
     </script>
 </body>
 </html>
