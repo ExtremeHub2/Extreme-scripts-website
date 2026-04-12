@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extreme Script Hub | Best Roblox Scripts</title>
+    <title>Extreme Scripts | Hub</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.ico">
 
     <style>
         :root {
-            --primary-red: #ff1a1a;
+            --primary-red: #ff0000;
             --dark-red: #8b0000;
             --bg-black: #050505;
             --card-bg: rgba(15, 15, 15, 0.9);
@@ -65,10 +65,11 @@
         }
         .intro-box p { margin-bottom: 15px; font-size: 1rem; color: #cccccc; }
         .disclaimer {
-            font-size: 0.8rem !important;
-            color: #666 !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem !important;
+            color: #888 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 15px;
+            font-style: italic;
         }
 
         .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
@@ -80,60 +81,20 @@
         }
         .main-btn:hover { background: var(--primary-red); box-shadow: 0 0 30px var(--primary-red); transform: translateY(-3px); }
         .secondary-btn {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid #333; color: #fff;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid #444; color: #fff;
             padding: 12px 25px; border-radius: 5px; text-decoration: none;
             font-size: 0.9rem; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;
         }
         .secondary-btn:hover { border-color: var(--primary-red); background: rgba(255, 0, 0, 0.1); }
 
-        .script-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-        .script-card {
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid rgba(255, 0, 0, 0.1);
-            padding: 40px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .script-card:hover {
-            border-color: var(--primary-red);
-            box-shadow: var(--glow);
-            transform: translateY(-5px);
-        }
-        .script-card h3 { font-family: 'Orbitron'; color: var(--primary-red); text-transform: uppercase; letter-spacing: 2px; }
-        
-        .forum-view {
-            display: none;
-            width: 100%;
-            text-align: left;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            padding: 30px;
-            border-radius: 12px;
-            animation: fadeIn 0.4s ease;
-        }
-        .forum-title { font-family: 'Orbitron'; color: var(--primary-red); border-bottom: 1px solid rgba(255,0,0,0.3); padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; }
-        
-        .play-btn {
-            display: inline-block; padding: 8px 20px; border: 1px solid #444;
-            background: rgba(255, 255, 255, 0.05); color: #fff; text-decoration: none;
-            font-size: 0.85rem; border-radius: 4px; margin: 10px 0; transition: 0.3s;
-        }
-        .play-btn:hover:not(.disabled) { border-color: #fff; background: rgba(255, 255, 255, 0.1); }
-        .play-btn.disabled { opacity: 0.3; cursor: not-allowed; background: transparent; }
-
         .copy-box {
-            position: relative; background: #000; border: 1px solid #222;
+            position: relative; background: #000; border: 1px solid #333;
             border-radius: 6px; padding: 15px; margin-top: 15px;
             display: flex; align-items: center; justify-content: space-between;
         }
-        .copy-box code { font-family: monospace; color: #00ff00; font-size: 0.8rem; overflow-x: auto; white-space: nowrap; width: 80%; }
+        .copy-box code { font-family: monospace; color: #00ff00; font-size: 0.85rem; overflow-x: auto; white-space: nowrap; width: 80%; }
 
+        /* ABOUT US SYSTEM */
         .about-layout { display: flex; width: 100%; background: var(--card-bg); border: 1px solid rgba(255, 0, 0, 0.2); border-radius: 12px; backdrop-filter: blur(10px); overflow: hidden; text-align: left; min-height: 400px; }
         .tabs-sidebar { width: 30%; background: rgba(0, 0, 0, 0.6); border-right: 1px solid rgba(255, 0, 0, 0.2); display: flex; flex-direction: column; }
         .tab-link { background: transparent; color: #fff; padding: 18px 20px; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); text-align: left; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: 0.3s; }
@@ -161,18 +122,18 @@
     <div class="container">
         
         <div id="phase1" class="phase active">
-            <h1>Extreme Script Hub</h1>
+            <h1>Extreme Scripts</h1>
             <div class="intro-box">
-                <p>Yo! Welcome to <strong>Extreme Scripts</strong>. We're a group focused on making and testing Roblox scripts. Everything here is for <strong>educational use and research</strong>.</p>
-                <p>The goal is to help devs understand how Luau environments work. Don't go around breaking Roblox ToS. We're just here to show what's possible in a scripting environment.</p>
+                <p>Welcome to <strong>Extreme Scripts</strong>. We specialize in the development and analysis of Roblox scripts strictly for <strong>educational purposes, testing, and security research</strong>.</p>
+                <p>Our goal is to provide a learning platform for developers to understand Luau scripting environments. We do <strong>not</strong> promote or encourage the violation of Roblox's Terms of Service (ToS).</p>
                 <p class="disclaimer">
-                    <strong>Note:</strong> You're responsible for what you do. We aren't responsible for any account bans or issues if you misuse these. Use your head.
+                    <strong>DISCLAIMER:</strong> By using this site, you acknowledge that you are responsible for your own actions. Extreme Scripts is not liable for any account actions or consequences.
                 </p>
             </div>
-            <button class="main-btn" onclick="goToPhase2()">Get The Script</button>
+            <button class="main-btn" onclick="goToPhase2()">Get Script</button>
             <div class="btn-group">
-                <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn">Discord Server</a>
-                <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn">YouTube Channel</a>
+                <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn">Join Our Discord</a>
+                <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn">Subscribe To Us</a>
             </div>
             <div style="margin-top: 15px;">
                 <button onclick="goToPhaseAbout()" class="secondary-btn" style="margin: 0 auto; width: auto; padding: 12px 40px;">About Us</button>
@@ -180,92 +141,61 @@
         </div>
 
         <div id="phase2" class="phase">
-            <div id="selection-menu">
-                <h1>Active Scripts</h1>
-                <div class="script-grid">
-                    <div class="script-card" onclick="openForum('anime')">
-                        <h3>Anime Knockout</h3>
-                    </div>
-                    <div class="script-card" onclick="openForum('teamer')">
-                        <h3>Client Sided Teamer</h3>
-                    </div>
-                </div>
-                <br><br>
-                <a href="#" onclick="goToPhase1()" style="color: #444; text-decoration: none; font-size: 0.9rem; font-family: 'Orbitron';">Go Back</a>
+            <h1>Discord Access</h1>
+            <div class="intro-box" style="max-width: 600px; margin: 0 auto 40px auto;">
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: #fff; margin-bottom: 15px;">
+                    All of our official scripts are hosted securely within our Discord community.
+                </p>
+                <p style="color: #ccc;">
+                    Join the server to get instant access to <strong>Anime Knockout</strong>, <strong>universal scripts</strong>, and stay updated with our latest releases and support.
+                </p>
             </div>
-
-            <div id="forum-anime" class="forum-view">
-                <h2 class="forum-title">Anime Knockout</h2>
-                <div style="color: #ccc; line-height: 1.8;">
-                    - How to Use?<br>
-                    - Copy the script down below<br>
-                    - Open up the game: <a href="https://www.roblox.com/games/104843911500837/Anime-Knockout" target="_blank" class="play-btn">Click to play</a><br>
-                    - Paste it into your executor and run it
-                </div>
-                <div class="copy-box">
-                    <code id="code1">loadstring(game:HttpGet("https://raw.githubusercontent.com/ExtremeHub2/Best-Roblox-Anime-Knockout-Script-ExtremeHub/refs/heads/main/Main-Script"))()</code>
-                    <button class="main-btn" style="padding: 5px 15px; font-size: 0.7rem;" onclick="copyCode('code1', this)">COPY</button>
-                </div>
-                <br>
-                <button class="secondary-btn" onclick="closeForums()">Back to Selection</button>
-            </div>
-
-            <div id="forum-teamer" class="forum-view">
-                <h2 class="forum-title">Client Sided Teamer</h2>
-                <div style="color: #ccc; line-height: 1.8;">
-                    - How to Use?<br>
-                    - Just copy the code<br>
-                    - Open the game <span class="play-btn disabled">Click to play</span><br>
-                    - Run it in your preferred executor
-                </div>
-                <div class="copy-box">
-                    <code id="code2">loadstring(game:HttpGet("https://raw.githubusercontent.com/ExtremeHub2/Client-sided-teamer-extreme-scripts/refs/heads/main/Teaming-Script"))()</code>
-                    <button class="main-btn" style="padding: 5px 15px; font-size: 0.7rem;" onclick="copyCode('code2', this)">COPY</button>
-                </div>
-                <br>
-                <button class="secondary-btn" onclick="closeForums()">Back to Selection</button>
-            </div>
+            
+            <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="main-btn" style="padding: 18px 50px; font-size: 1.3rem;">Join Discord Server</a>
+            
+            <br><br><br>
+            <a href="#" onclick="goToPhase1()" style="color: #555; text-decoration: none; font-size: 0.9rem; font-family: 'Orbitron', sans-serif;">Go Back</a>
         </div>
 
         <div id="phaseAbout" class="phase">
-            <h1>The Details</h1>
+            <h1>Information</h1>
             <div class="about-layout">
                 <div class="tabs-sidebar">
                     <button class="tab-link active-tab" onclick="openTab(event, 'tab-about')">About Us</button>
                     <button class="tab-link" onclick="openTab(event, 'tab-disc')">Disclaimers</button>
-                    <button class="tab-link" onclick="openTab(event, 'tab-lic')">License Info</button>
+                    <button class="tab-link" onclick="openTab(event, 'tab-lic')">License</button>
                     <button class="tab-link" onclick="openTab(event, 'tab-soc')">Socials</button>
                 </div>
                 
                 <div id="tab-about" class="tab-content active-content">
-                    <h2>Who are we?</h2>
-                    <p>Started this thing back in 2024 just for fun. As s small server messing with Roblox code and seeing what we can optimize.</p>
-                    <p>We're mostly focused on the Luau environment and trying to push the limits of what a script hub can do for testing game mechanics.</p>
+                    <h2>About Us</h2>
+                    <p>Extreme Scripts was founded in 2024 as a small server for development purposes. Our mission is to provide high-quality, optimized scripts for educational and security research purposes.</p>
+                    <p>We focus on the Luau environment, and provide with executor-based scripts.</p>
                 </div>
                 <div id="tab-disc" class="tab-content">
-                    <h2>Read this</h2>
-                    <p>Basically, don't be an idiot. These are for learning. If you use them to go around annoying everyone or breaking games, that's on you.</p>
-                    <p>Running scripts always has risks. We don't control your account, you do. Be smart about it.</p>
+                    <h2>Disclaimers</h2>
+                    <p>All scripts and information provided on this website are for strictly educational purposes. We do not promote the use of scripts to ruin the experience of other players or violate Roblox's Terms of Service.</p>
+                    <p>Usage of third-party software is always at your own risk. Extreme Scripts is not responsible for any actions taken against your account.</p>
                 </div>
                 <div id="tab-lic" class="tab-content">
-                    <h2>Permissions</h2>
-                    <p>Most of our stuff is open-source because we believe in sharing code. But the UI and the custom frameworks we built are ours.</p>
-                    <p>Feel free to look at the code and learn from it, just don't try to sell it as your own work without consent of the creator. That's just lame.</p>
+                    <h2>License</h2>
+                    <p>The scripts provided on this hub can be shared with proper credits to extreme scripts. However, the UI design and specific proprietary frameworks are owned by Extreme Scripts.</p>
+                    <p>You are free to use our scripts in your games, provided you do not attempt to resell them as your own work or share it without the creator's consent.</p>
                 </div>
                 <div id="tab-soc" class="tab-content">
-                    <h2>Stay Updated</h2>
-                    <p>Come hang out in the Discord if you have questions or just want to see when we drop new stuff.</p>
-                    <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn" style="margin-bottom: 10px; width: 100%;">My YouTube</a>
-                    <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn" style="width: 100%;">The Discord</a>
+                    <h2>Socials</h2>
+                    <p>Connect with the community and stay updated with our latest releases:</p>
+                    <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn" style="margin-bottom: 10px; width: 100%;">YouTube Channel</a>
+                    <a href="https://discord.gg/gjEWGU5Z" target="_blank" class="secondary-btn" style="width: 100%;">Join Discord Server</a>
                 </div>
             </div>
             <br>
-            <a href="#" onclick="goToPhase1()" style="color: #444; text-decoration: none; font-size: 0.9rem; font-family: 'Orbitron';">Go Back</a>
+            <a href="#" onclick="goToPhase1()" style="color: #555; text-decoration: none; font-size: 0.9rem; font-family: 'Orbitron';">Go Back</a>
         </div>
     </div>
 
     <script>
-        function goToPhase2() { switchPhase('phase2'); closeForums(); }
+        function goToPhase2() { switchPhase('phase2'); }
         function goToPhaseAbout() { switchPhase('phaseAbout'); }
         function goToPhase1() { switchPhase('phase1'); }
 
@@ -278,15 +208,6 @@
                 next.classList.add('active');
                 setTimeout(() => { next.style.opacity = '1'; }, 50);
             }, 400);
-        }
-
-        function openForum(type) {
-            document.getElementById('selection-menu').style.display = 'none';
-            document.getElementById('forum-' + type).style.display = 'block';
-        }
-        function closeForums() {
-            document.getElementById('selection-menu').style.display = 'block';
-            document.querySelectorAll('.forum-view').forEach(f => f.style.display = 'none');
         }
 
         function copyCode(id, btn) {
@@ -307,6 +228,7 @@
             evt.currentTarget.classList.add("active-tab");
         }
 
+        /* Particle Engine */
         const canvas = document.getElementById('particles-js');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -316,9 +238,9 @@
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 2 + 1;
-                this.speedX = Math.random() * 2.5 - 1.25;
-                this.speedY = Math.random() * 2.5 - 1.25;
-                this.color = Math.random() > 0.5 ? '#ff1a1a' : '#220000';
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? '#ff0000' : '#330000';
             }
             update() {
                 this.x += this.speedX; this.y += this.speedY;
@@ -332,7 +254,7 @@
         }
         function createParticles() {
             particles = [];
-            const count = (canvas.width * canvas.height) / 8000;
+            const count = (canvas.width * canvas.height) / 10000;
             for (let i = 0; i < count; i++) particles.push(new Particle());
         }
         function animate() {
