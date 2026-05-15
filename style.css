@@ -295,6 +295,7 @@ h1 {
 }
 
 .intro-box {
+    text-align: center;
     width: min(860px, 100%);
     margin: 0 auto 34px;
     padding: 34px;
