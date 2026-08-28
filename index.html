@@ -3,61 +3,544 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error encountred</title>
+    <title>Nezo World</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Modern Cyber & Glassmorphism Theme Enhancement */
+        :root {
+            --bg-base: #070707;
+            --accent-red: #ff3b3b;
+            --accent-dark: #421010;
+            --text-main: #f2f2f2;
+            --text-muted: #a0a0a0;
+            --font-head: 'Orbitron', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --glass-bg: rgba(20, 20, 22, 0.65);
+            --glass-border: rgba(255, 59, 59, 0.15);
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            height: 100vh;
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        /* Background & Ambience */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .ambient {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.6;
+            pointer-events: none;
+            animation: pulse 8s infinite alternate;
+        }
+
+        .ambient-one {
+            width: 40vw;
+            height: 40vw;
+            background: var(--accent-dark);
+            top: -10%;
+            left: -10%;
+        }
+
+        .ambient-two {
+            width: 30vw;
+            height: 30vw;
+            background: rgba(255, 59, 59, 0.08);
+            bottom: -10%;
+            right: -5%;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        /* Layout & Container */
+        .shell {
+            position: relative;
+            z-index: 10;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            min-height: 100vh;
             padding: 20px;
+            box-sizing: border-box;
         }
 
-        .termination-container {
-            max-width: 600px;
+        .container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 45px 40px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .sad-face {
-            font-size: 72px;
+        /* Typography & Badges */
+        h1 {
+            font-family: var(--font-head);
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin: 15px 0 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 59, 59, 0.4);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(255, 59, 59, 0.1);
+            border: 1px solid rgba(255, 59, 59, 0.4);
+            border-radius: 30px;
+            font-family: var(--font-head);
+            font-size: 0.75rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1;
+            color: var(--accent-red);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(255, 59, 59, 0.1);
         }
 
-        .message {
-            font-size: 20px;
+        .intro-box {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 3px solid var(--accent-red);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: left;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .intro-box p {
+            margin: 10px 0;
+        }
+        
+        .intro-box p:first-child { margin-top: 0; }
+        .intro-box p:last-child { margin-bottom: 0; }
+
+        .intro-title {
+            font-size: 1.15rem;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        strong {
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            padding-top: 12px;
+            margin-top: 15px !important;
+        }
+
+        /* Buttons & CTAs */
+        .cta-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button, a.main-btn, a.secondary-btn {
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            letter-spacing: 1px;
+            box-sizing: border-box;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-btn {
+            background: linear-gradient(135deg, #ff3b3b 0%, #cc0000 100%);
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
+            width: 100%;
+        }
+
+        .main-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 59, 59, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .main-btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 14px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255, 59, 59, 0.1);
+            border-color: rgba(255, 59, 59, 0.5);
+            color: #ffffff;
+        }
+
+        .secondary-btn-wide {
+            width: 100%;
+        }
+
+        .aux-link-wrap { width: 100%; }
+
+        .back-link {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: var(--font-body);
             font-weight: 500;
-            line-height: 1.5;
-            margin-bottom: 15px;
         }
 
-        .footer-text {
-            font-size: 14px;
-            font-weight: 400;
-            color: #aaaaaa;
+        .back-link:hover {
+            color: var(--accent-red);
+            text-decoration: underline;
+        }
+
+        /* Tabs (Information Center) */
+        .about-layout {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .tabs-sidebar {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 5px;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .tab-link {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 8px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .tab-link:hover {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+
+        .tab-link.active-tab {
+            background: rgba(255, 59, 59, 0.15);
+            color: var(--accent-red);
+            box-shadow: 0 0 10px rgba(255, 59, 59, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-main);
+            min-height: 150px;
+        }
+
+        .tab-content.active-content {
+            display: block;
+            animation: fadeInTab 0.4s ease forwards;
+        }
+
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content h2 {
+            color: #fff;
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.2);
+        }
+
+        .social-btn {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        /* Phase Transitions */
+        .phase {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            width: 100%;
+        }
+
+        .phase.active {
+            display: block;
+        }
+        
+        /* Scrollbar styling for code/tabs if needed */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 59, 59, 0.3); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 59, 59, 0.6); }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .btn-group { flex-direction: column; }
+            .container { padding: 30px 20px; }
+            h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
+    <canvas id="particles-js" aria-hidden="true"></canvas>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
 
-    <div class="termination-container">
-        <div class="sad-face">:(</div>
-        <p class="message">Oops, This website is currently being revamped and will be back very soon!</p>
-        <p class="footer-text">Powered by Exo Hub | Elite Studios</p>
-    </div>
+    <main class="shell">
+        <section class="container">
+            <div id="phase1" class="phase active" style="opacity: 1;">
+                <div class="hero-badge">Nezo's World</div>
+                <h1>Nezo Scripts</h1>
 
+                <div class="intro-box">
+                    <p class="intro-title" style="text-align: center;">
+                        Welcome to <strong>Nezo World</strong>
+                    </p>
+                    
+                    <p>
+                        We provide Scripts that are executed in an executor for educational purposes. We do <strong>not</strong> promote or encourage the violation of Roblox's Terms of Service (ToS).</p>
+                    <p class="disclaimer">
+                        <strong>DISCLAIMER:</strong> By using this site, you acknowledge that you are responsible for your own actions. Nezo Scripts is not liable for any account actions or consequences.
+                    </p>
+                </div>
+
+                <div class="cta-stack">
+                    <button class="main-btn" onclick="goToPhase2()">Get Script</button>
+                    <div class="btn-group">
+                        <a href="https://discord.gg/mKMAY3jsGD" target="_blank" class="secondary-btn">Join Our Discord</a>
+                        <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn">Subscribe To Us</a>
+                    </div>
+                    <div class="aux-link-wrap">
+                        <button onclick="goToPhaseAbout()" class="secondary-btn secondary-btn-wide">About Us</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="phase2" class="phase">
+                <div class="hero-badge">Join Discord Server</div>
+                <h1>Discord Server</h1>
+
+                <div class="intro-box intro-box-narrow">
+                    <p class="lead-text">
+                        All of our official scripts are hosted securely within our Discord community.
+                    </p>
+                    <p>
+                        Join the server to get instant access to <strong>Anime Knockout</strong>, <strong>More Cool scripts</strong>, and stay updated with our latest releases and support.
+                    </p>
+                </div>
+
+                <div class="cta-stack">
+                    <a href="https://discord.gg/mKMAY3jsGD" target="_blank" class="main-btn main-btn-large">Join Discord Server</a>
+                    <a href="#" onclick="goToPhase1()" class="back-link">Go Back</a>
+                </div>
+            </div>
+
+            <div id="phaseAbout" class="phase">
+                <div class="hero-badge">Information Center</div>
+                <h1>Information</h1>
+
+                <div class="about-layout">
+                    <div class="tabs-sidebar">
+                        <button class="tab-link active-tab" onclick="openTab(event, 'tab-about')">About Us</button>
+                        <button class="tab-link" onclick="openTab(event, 'tab-disc')">Disclaimers</button>
+                        <button class="tab-link" onclick="openTab(event, 'tab-lic')">License</button>
+                        <button class="tab-link" onclick="openTab(event, 'tab-soc')">Socials</button>
+                    </div>
+
+                    <div class="tab-panel">
+                        <div id="tab-about" class="tab-content active-content">
+                            <h2>About Us</h2>
+                            <p>Nezo Scripts was founded in 2024 as a small server for development purposes. Our mission is to provide high-quality scripts.</p>
+                            <p>We focus on roblox related scripting.</p>
+                        </div>
+                        <div id="tab-disc" class="tab-content">
+                            <h2>Disclaimers</h2>
+                            <p>All scripts and information provided on this website are for strictly educational purposes. We do not promote the use of scripts to ruin the experience of other players or violate Roblox's Terms of Service.</p>
+                            <p>Usage of third-party software is always at your own risk. Nezo Scripts is not responsible for any actions taken against your account.</p>
+                        </div>
+                        <div id="tab-lic" class="tab-content">
+                            <h2>License</h2>
+                            <p>The scripts provided on this hub can be shared with proper credits to extreme scripts. However, the UI design and specific proprietary frameworks are owned by Extreme Scripts.</p>
+                            <p>You are free to use our scripts in your games, provided you do not attempt to resell them as your own work or share it without the creator's consent.</p>
+                        </div>
+                        <div id="tab-soc" class="tab-content">
+                            <h2>Socials</h2>
+                            <p>Connect with the community and stay updated with our latest releases:</p>
+                            <a href="https://www.youtube.com/@ExtremeScriptz" target="_blank" class="secondary-btn social-btn">YouTube Channel</a>
+                            <a href="https://discord.gg/mKMAY3jsGD" target="_blank" class="secondary-btn social-btn">Join Discord Server</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" onclick="goToPhase1()" class="back-link">Go Back</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function goToPhase2() { switchPhase('phase2'); }
+        function goToPhaseAbout() { switchPhase('phaseAbout'); }
+        function goToPhase1() { switchPhase('phase1'); }
+
+        function switchPhase(id) {
+            const current = document.querySelector('.phase.active');
+            current.style.opacity = '0';
+            setTimeout(() => {
+                current.classList.remove('active');
+                const next = document.getElementById(id);
+                next.classList.add('active');
+                setTimeout(() => { next.style.opacity = '1'; }, 50);
+            }, 400);
+        }
+
+        function copyCode(id, btn) {
+            const code = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(code);
+            const oldText = btn.innerText;
+            btn.innerText = "COPIED";
+            setTimeout(() => { btn.innerText = oldText; }, 2000);
+        }
+
+        function openTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) tabcontent[i].classList.remove("active-content");
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active-tab");
+            document.getElementById(tabName).classList.add("active-content");
+            evt.currentTarget.classList.add("active-tab");
+        }
+
+        const canvas = document.getElementById('particles-js');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.color = Math.random() > 0.5 ? '#ff3b3b' : '#421010';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function Particles() {
+            particles = [];
+            const count = (canvas.width * canvas.height) / 10000;
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p) => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            initCanvas();
+            Particles(); // Fixed function call
+        });
+
+        initCanvas();
+        Particles(); // Fixed function call
+        animate();
+    </script>
 </body>
 </html>
