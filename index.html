@@ -337,6 +337,95 @@
         .phase.active {
             display: block;
         }
+
+        /* Verification Styles */
+        .verification-box {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin: 30px 0 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .verification-box:hover {
+            background: rgba(255, 59, 59, 0.05);
+            border-color: rgba(255, 59, 59, 0.4);
+        }
+        .verify-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--text-muted);
+            border-radius: 4px;
+            margin-right: 18px;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .verification-box.verifying .verify-checkbox {
+            border-color: var(--accent-red);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .verification-box.verified .verify-checkbox {
+            border-color: #00ff00;
+            background-color: rgba(0, 255, 0, 0.1);
+            animation: none;
+        }
+        .verification-box.verified .verify-checkbox::after {
+            content: '✓';
+            color: #00ff00;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .verify-text {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            font-family: var(--font-body);
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Learn More Link Hover Animation */
+        .learn-more-link {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+            font-family: var(--font-body);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .learn-more-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-red);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        .learn-more-link:hover {
+            color: var(--accent-red);
+        }
+        .learn-more-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
         
         /* Scrollbar styling for code/tabs if needed */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -349,6 +438,8 @@
             .btn-group { flex-direction: column; }
             .container { padding: 30px 20px; }
             h1 { font-size: 1.8rem; }
+            .verification-box { padding: 15px; }
+            .verify-text { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -359,7 +450,48 @@
 
     <main class="shell">
         <section class="container">
-            <div id="phase1" class="phase active" style="opacity: 1;">
+            
+            <div id="phaseVerification" class="phase active" style="opacity: 1;">
+                <div class="hero-badge">Security Check</div>
+                <h1>Verification</h1>
+                
+                <div class="intro-box">
+                    <p class="intro-title" style="text-align: center;">
+                        <strong>Human Verification</strong>
+                    </p>
+                    <p style="text-align: center;">
+                        Please complete the security check below to prove you are human and access the site.
+                    </p>
+                </div>
+
+                <div class="verification-box" id="verifyBox" onclick="startVerification()">
+                    <div class="verify-checkbox"></div>
+                    <div class="verify-text" id="verifyText">Verify</div>
+                </div>
+                
+                <a href="#" onclick="goToLearnMore()" class="learn-more-link">Learn more</a>
+            </div>
+
+            <div id="phaseLearnMore" class="phase">
+                <div class="hero-badge">System Info</div>
+                <h1>Why Verify?</h1>
+
+                <div class="intro-box">
+                    <p class="intro-title" style="text-align: center;">
+                        <strong>Protecting Our Community</strong>
+                    </p>
+                    <p>
+                        We use a human verification system to ensure that our platform remains safe and secure from automated bots, spam, and malicious attacks.
+                    </p>
+                    <p>
+                        By completing this quick check, you help us maintain a high-quality experience and protect the resources we provide to genuine users.
+                    </p>
+                </div>
+
+                <a href="#" onclick="goToVerification()" class="back-link">Go Back</a>
+            </div>
+
+            <div id="phase1" class="phase">
                 <div class="hero-badge">Nezo's World</div>
                 <h1>Nezo Scripts</h1>
 
@@ -449,9 +581,34 @@
     </main>
 
     <script>
+        let isVerifying = false;
+
+        function startVerification() {
+            if(isVerifying) return;
+            isVerifying = true;
+            
+            const verifyBox = document.getElementById('verifyBox');
+            const verifyText = document.getElementById('verifyText');
+            
+            verifyBox.classList.add('verifying');
+            verifyText.innerText = "Verifying...";
+            
+            setTimeout(() => {
+                verifyBox.classList.remove('verifying');
+                verifyBox.classList.add('verified');
+                verifyText.innerText = "Verified successfully!";
+                
+                setTimeout(() => {
+                    goToPhase1();
+                }, 800);
+            }, 2000);
+        }
+
         function goToPhase2() { switchPhase('phase2'); }
         function goToPhaseAbout() { switchPhase('phaseAbout'); }
         function goToPhase1() { switchPhase('phase1'); }
+        function goToLearnMore() { switchPhase('phaseLearnMore'); }
+        function goToVerification() { switchPhase('phaseVerification'); }
 
         function switchPhase(id) {
             const current = document.querySelector('.phase.active');
